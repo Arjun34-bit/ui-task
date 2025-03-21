@@ -10,7 +10,7 @@ const DataPanel = ({ data }) => {
   // Dynamically scale font size based on panel size
   const getFontSize = () => {
     const baseSize = Math.min(panelSize.width, panelSize.height) / 10;
-    return Math.min(32, Math.max(12, baseSize)); // Font size between 12px and 32px
+    return Math.min(32, Math.max(12, baseSize));
   };
 
   // Update panel size when resized
