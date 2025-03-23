@@ -1,5 +1,6 @@
 import React from "react";
-import DataPanel from "./components/DataPanel";
+import Panel from "./components/Panels";
+import "./App.css";
 
 const App = () => {
   const singleSeriesData = [{ label: "Single Label", value: 1234.56 }];
@@ -12,10 +13,10 @@ const App = () => {
     { label: "Label 6", value: 600 },
   ];
   return (
-    <div>
+    <div className="gaps">
       <h1>Responsive Grid</h1>
-      <DataPanel data={singleSeriesData} />
-      <DataPanel data={multiSeriesData} />
+      <Panel data={singleSeriesData} />
+      <Panel data={multiSeriesData} />
     </div>
   );
 };
