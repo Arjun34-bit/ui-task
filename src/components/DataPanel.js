@@ -7,17 +7,15 @@ import "./styles.css";
 const DataPanel = ({ data }) => {
   const [panelSize, setPanelSize] = useState({ width: 600, height: 200 });
 
-  // Dynamically scale font size based on panel size
   const getFontSize = () => {
     const baseSize = Math.min(panelSize.width, panelSize.height) / 10;
     return Math.min(32, Math.max(12, baseSize));
   };
 
-  // Update panel size when resized
   const onResizeStop = (_, __, newItem) => {
     if (newItem.i === "inner-panel") {
       setPanelSize({
-        width: newItem.w * 100, // Convert grid units to pixels
+        width: newItem.w * 100,
         height: newItem.h * 100,
       });
     }
@@ -36,7 +34,6 @@ const DataPanel = ({ data }) => {
       onResizeStop={onResizeStop}
       draggableHandle=".drag-handle"
     >
-      {/* Resizable Panel */}
       <div key="inner-panel" className="resizable-panel">
         <div className="drag-handle">Drag Here</div>
         <div className="inner-content">
