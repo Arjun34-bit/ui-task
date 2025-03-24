@@ -1,15 +1,14 @@
 import "./Panel.css";
 import React, { useEffect, useRef, useState } from "react";
-import RGL, { WidthProvider } from "react-grid-layout";
+import RGL, { WidthProvider, Responsive } from "react-grid-layout";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 
-const ReactGridLayout = WidthProvider(RGL);
+const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 const Panel = ({
   className = "layout",
   rowHeight = 30,
-  cols = 12,
   data = [],
   onLayoutChange = () => {},
 }) => {
@@ -35,19 +34,23 @@ const Panel = ({
   //   const { width, height } = calculateGridItemSize(w, h);
 
   return (
-    <ReactGridLayout
+    <ResponsiveReactGridLayout
       layout={layout}
       onLayoutChange={(newLayout) => {
         setLayout(newLayout);
         onLayoutChange(newLayout);
       }}
       rowHeight={rowHeight}
-      cols={cols}
+      cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
       className={className}
       isResizable={true}
       isDraggable={false}
     >
-      <div key="panel" className="resizable-container">
+      <div
+        key="panel"
+        className="resizable-container"
+        data-grid={{ w: 4, h: 4, x: 0, y: 0, minW: 2, minH: 3 }}
+      >
         <div className="panel-content">
           {data.map((item, index) => (
             <div
@@ -61,7 +64,7 @@ const Panel = ({
           ))}
         </div>
       </div>
-    </ReactGridLayout>
+    </ResponsiveReactGridLayout>
   );
 };
 
